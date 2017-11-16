@@ -2,22 +2,23 @@ package tk.arnoldwho.arecorder;
 
 import android.content.Intent;
 import android.media.projection.MediaProjection;
-import android.media.projection.MediaProjectionManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
+
 import java.io.File;
 
 /**
  * Created by arnold on 2017/11/16.
  */
 
-public class Activity2 extends MainActivity{
+public class Start extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        startButton.setText("Stop recorder");
         moveTaskToBack(true);
         Intent captureIntent = mMediaProjectionManager.createScreenCaptureIntent();
         startActivityForResult(captureIntent, REQUEST_CODE);

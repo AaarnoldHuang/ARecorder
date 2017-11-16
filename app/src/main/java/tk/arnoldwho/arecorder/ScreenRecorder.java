@@ -26,6 +26,7 @@ public class ScreenRecorder extends Thread {
     private int mDpi;
     private String mDstPath;
     private MediaProjection mMediaProjection;
+
     // parameters for the encoder
     private static final String MIME_TYPE = "video/avc"; // H.264 Advanced Video Coding
     private static final int FRAME_RATE = 30; // 30 fps

@@ -44,8 +44,7 @@ public class ArTileService extends TileService{
     @Override
     public void onClick() {
         super.onClick();
-        startActivity(new Intent("Activity2"));
-        //changeTileState(0);
+        startActivity(new Intent("StartRecorder"));
     }
 
     private void changeTileState(int newState) {

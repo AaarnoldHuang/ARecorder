@@ -30,59 +30,32 @@ import java.lang.reflect.Method;
  * Created by arnold on 2017/11/10.
  */
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends Activity{
 
         private int id = 1;
         public static final int REQUEST_CODE = 1;
         public MediaProjectionManager mMediaProjectionManager;
         public ScreenRecorder Recorder;
-        private Button startButton;
+        public Button startButton;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
-            //startButton = (Button) findViewById(R.id.button);
-            //startButton.setOnClickListener(this);
+            startButton = (Button) findViewById(R.id.button);
             mMediaProjectionManager = (MediaProjectionManager) getSystemService(MEDIA_PROJECTION_SERVICE);
         }
 
-        @Override
-        public void onClick(View v) {
-            if (Recorder != null) {
-                Recorder.quit();
-                Recorder = null;
-                startButton.setText("Restart recorder");
-            }
-            else {
-                Intent captureIntent = mMediaProjectionManager.createScreenCaptureIntent();
-                startActivityForResult(captureIntent, REQUEST_CODE);
-            }
+      public void startRecorder(View view){
+        if (Recorder != null) {
+            Recorder.quit();
+            Recorder = null;
         }
-
-        public void activity2(View view){
+        else {
             moveTaskToBack(true);
-            startActivity(new Intent("Activity2"));
+            startActivity(new Intent("StartRecorder"));
         }
-
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            if(Recorder != null){
-                Recorder.quit();
-                Recorder = null;
-            }
-        }
-
-   /* public static void collapseStatusBar(Context context) {
-        try {
-            Object statusBarManager = context.getSystemService("statusbar");
-            Method collapse;
-            collapse = statusBarManager.getClass().getMethod("collapsePanels");
-            collapse.invoke(statusBarManager);
-        } catch (Exception localException) {
-            localException.printStackTrace();
-        }*/
+    }
 
         NotificationManager mNotificationManager;
 
