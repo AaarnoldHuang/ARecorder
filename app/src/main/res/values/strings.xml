@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ARecorder</string>
+    <string name="tile_label">Arecorder</string>
+</resources>
